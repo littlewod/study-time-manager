@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.DS_Store
+Thumbs.db
+
+# Private runtime data. Public examples live in examples/.
+data/*.json
+!data/.gitkeep
+plan-data.js
+
+# Personal exports and generated bundles.
+*.zip
+考研追踪*
+手机使用说明.txt
+gen_single.js
+scripts/build_plan.js
+
+# Local editor and environment files.
+.venv/
+.env
+.idea/
+.vscode/

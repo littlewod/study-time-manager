@@ -1,0 +1,15 @@
+[project]
+name = "study-hub-time-manager"
+version = "1.1.0"
+description = "A local-first study planning, focus timer, and time review tool."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Study Hub contributors" }]
+keywords = ["study", "time-management", "pomodoro", "productivity", "local-first"]
+
+[project.urls]
+Homepage = "https://github.com/littlewod/study-time-manager"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

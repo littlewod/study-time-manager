@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "meta": {
+    "id": "sample-study-plan-2026-01-05",
+    "title": "7天专注学习示例",
+    "generatedAt": "2026-01-05T08:00:00+08:00",
+    "planStart": "2026-01-05",
+    "planEnd": "2026-01-11",
+    "timezone": "Asia/Shanghai",
+    "normalDayMinutes": 180,
+    "lightDayMinutes": 60,
+    "normalStudyDaysPerWeek": 6,
+    "professionalCourseStatus": "这是一份可替换的示例计划。编辑 data/plan.json，即可换成自己的学习路线。",
+    "riskRules": [
+      "连续两天完成率低于60%时，先减少任务数量，再保护睡眠与连续性。",
+      "每次专注只处理一个明确任务，休息后再切换主题。"
+    ]
+  },
+  "weeks": [
+    {
+      "id": "week-01",
+      "start": "2026-01-05",
+      "end": "2026-01-11",
+      "title": "建立稳定的专注节奏",
+      "goals": [
+        "完成6个正常学习日和1个轻量复盘日",
+        "累计记录至少8次专注时段",
+        "周末根据实际用时调整下一周计划"
+      ],
+      "milestone": "任务完成率达到80%，且实际专注时长能够被完整记录。"
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-01-05",
+      "dayType": "normal",
+      "focus": "明确本周目标并启动第一个专注周期",
+      "totalMinutes": 150,
+      "tasks": [
+        {"id": "sample-d1-plan", "category": "规划", "durationMin": 30, "title": "拆解本周学习目标", "details": "把本周目标拆成可在一次专注中完成的小任务。", "acceptance": "写下3个具体且可检查的目标。"},
+        {"id": "sample-d1-core", "category": "核心学习", "durationMin": 90, "title": "完成核心课程学习", "details": "观看课程或阅读教材，并记录关键概念。", "acceptance": "输出一页结构化笔记。"},
+        {"id": "sample-d1-review", "category": "复盘", "durationMin": 30, "title": "整理疑问与下一步", "details": "列出仍不确定的内容。", "acceptance": "形成下一次学习的起点。"}
+      ]
+    },
+    {
+      "date": "2026-01-06",
+      "dayType": "normal",
+      "focus": "用练习检验昨天的输入",
+      "totalMinutes": 180,
+      "tasks": [
+        {"id": "sample-d2-review", "category": "复习", "durationMin": 30, "title": "闭卷回忆昨日知识", "details": "不看笔记写出知识框架。", "acceptance": "找出至少2个记忆薄弱点。"},
+        {"id": "sample-d2-practice", "category": "练习", "durationMin": 120, "title": "完成一组针对性练习", "details": "优先处理薄弱点对应题目。", "acceptance": "完成、订正并标记错因。"},
+        {"id": "sample-d2-note", "category": "复盘", "durationMin": 30, "title": "更新错题与知识笔记", "details": "只保留能帮助下次判断的信息。", "acceptance": "每个错题写出一句错因。"}
+      ]
+    },
+    {
+      "date": "2026-01-07",
+      "dayType": "normal",
+      "focus": "推进新内容并保持练习反馈",
+      "totalMinutes": 180,
+      "tasks": [
+        {"id": "sample-d3-input", "category": "核心学习", "durationMin": 90, "title": "学习下一单元", "details": "先看目录和目标，再进入细节。", "acceptance": "能口头解释本单元主线。"},
+        {"id": "sample-d3-practice", "category": "练习", "durationMin": 60, "title": "完成基础练习", "details": "用练习确认概念是否掌握。", "acceptance": "正确率达到预设目标或完成订正。"},
+        {"id": "sample-d3-summary", "category": "复盘", "durationMin": 30, "title": "写三句学习总结", "details": "记录掌握、困难和下一步。", "acceptance": "三项内容均具体可执行。"}
+      ]
+    },
+    {
+      "date": "2026-01-08",
+      "dayType": "normal",
+      "focus": "集中处理本周最难的问题",
+      "totalMinutes": 180,
+      "tasks": [
+        {"id": "sample-d4-hard", "category": "攻坚", "durationMin": 90, "title": "处理一个高难度主题", "details": "把问题拆成定义、例子和练习。", "acceptance": "完成一份可复述的解题或理解流程。"},
+        {"id": "sample-d4-test", "category": "练习", "durationMin": 60, "title": "完成限时自测", "details": "在不查资料的情况下作答。", "acceptance": "记录用时、得分和主要失误。"},
+        {"id": "sample-d4-fix", "category": "复盘", "durationMin": 30, "title": "修正自测暴露的问题", "details": "只处理最影响得分的问题。", "acceptance": "重新完成对应题目。"}
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "dayType": "normal",
+      "focus": "将知识转化为稳定输出",
+      "totalMinutes": 180,
+      "tasks": [
+        {"id": "sample-d5-output", "category": "输出", "durationMin": 60, "title": "向自己讲解本周主题", "details": "用自己的语言讲解，不照读笔记。", "acceptance": "录音或写出完整讲解提纲。"},
+        {"id": "sample-d5-practice", "category": "练习", "durationMin": 90, "title": "完成综合练习", "details": "混合本周不同知识点。", "acceptance": "完成后按错因分类。"},
+        {"id": "sample-d5-plan", "category": "规划", "durationMin": 30, "title": "安排周末验收", "details": "选择最能检验成果的任务。", "acceptance": "确定题目、时长与通过标准。"}
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "dayType": "normal",
+      "focus": "完成周验收并形成反馈",
+      "totalMinutes": 180,
+      "tasks": [
+        {"id": "sample-d6-test", "category": "验收", "durationMin": 120, "title": "完成本周综合验收", "details": "按预设规则独立完成。", "acceptance": "得到可比较的分数或成果。"},
+        {"id": "sample-d6-review", "category": "复盘", "durationMin": 60, "title": "分析结果并提炼改进项", "details": "区分知识问题、方法问题和时间问题。", "acceptance": "写出下周最重要的3项改进。"}
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "dayType": "light",
+      "focus": "轻量复盘，给下一周留下清晰入口",
+      "totalMinutes": 60,
+      "tasks": [
+        {"id": "sample-d7-stats", "category": "复盘", "durationMin": 30, "title": "查看完成率与专注时长", "details": "比较计划时长和实际专注时长。", "acceptance": "找到一个最需要调整的时间估算。"},
+        {"id": "sample-d7-next", "category": "规划", "durationMin": 30, "title": "制定下一周计划", "details": "根据真实数据安排任务。", "acceptance": "任务总量不超过本周实际承载能力。"}
+      ]
+    }
+  ],
+  "roadmap": [
+    {"id": "phase-1", "start": "2026-01-05", "end": "2026-01-11", "title": "建立节奏", "detail": "连续记录任务完成情况与专注时长，形成第一份真实数据。"},
+    {"id": "phase-2", "start": "2026-01-12", "end": "2026-01-25", "title": "稳定执行", "detail": "根据实际用时调整任务颗粒度，减少计划偏差。"},
+    {"id": "phase-3", "start": "2026-01-26", "end": "2026-02-01", "title": "复盘迭代", "detail": "保留有效方法，重做薄弱任务，并生成下一阶段计划。"}
+  ],
+  "evidence": []
+}

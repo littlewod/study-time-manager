@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08111f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="研途学习卡">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>研途 · 学习时间管理</title>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">跳到主要内容</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">研</span>
+        <div class="brand-copy">
+          <p class="product-name">研途 Study Hub</p>
+          <h1>把计划变成一段段可完成的专注时间</h1>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="clock-block" aria-label="当前系统时间">
+          <strong id="clockText">--:--</strong>
+          <span id="dateText">正在读取系统日期…</span>
+        </div>
+        <div class="top-actions">
+          <span class="sync-pill" id="syncPill" role="status">正在连接</span>
+          <button class="icon-button" id="refreshButton" type="button" aria-label="刷新计划与进度" title="刷新">
+            <span aria-hidden="true">↻</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="主视图">
+      <button class="tab active" id="todayTab" data-view="today" role="tab" aria-controls="todayView" aria-selected="true" type="button">今日</button>
+      <button class="tab" id="weekTab" data-view="week" role="tab" aria-controls="weekView" aria-selected="false" type="button">本周</button>
+      <button class="tab" id="roadmapTab" data-view="roadmap" role="tab" aria-controls="roadmapView" aria-selected="false" type="button">路线</button>
+      <span class="plan-chip" id="planChip">学习计划</span>
+    </nav>
+
+    <main id="mainContent">
+      <section id="loadingView" class="loading-card" aria-live="polite">
+        <span class="sr-only">正在加载学习计划</span>
+        <div class="skeleton wide"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton short"></div>
+      </section>
+
+      <section id="todayView" class="view" role="tabpanel" aria-labelledby="todayTab" hidden>
+        <article class="hero-card">
+          <div class="hero-copy">
+            <div class="hero-kicker">
+              <span class="eyebrow">今日作战面板</span>
+              <span class="selected-date" id="selectedDateLabel">—</span>
+            </div>
+            <h2 id="todayFocus">—</h2>
+            <p id="todayBudget">—</p>
+            <div class="hero-stats" aria-label="今日任务摘要">
+              <div class="stat-item">
+                <strong id="remainingTasks">—</strong>
+                <span>待完成任务</span>
+              </div>
+              <div class="stat-item">
+                <strong id="remainingMinutes">—</strong>
+                <span>剩余分钟</span>
+              </div>
+              <div class="stat-item next-task-stat">
+                <strong id="nextTaskText">—</strong>
+                <span>下一项</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="button primary" id="continueButton" type="button">继续下一项</button>
+              <button class="button ghost" id="backTodayButton" type="button" hidden>返回今天</button>
+            </div>
+          </div>
+          <div class="progress-orb" id="todayOrb" role="progressbar" aria-label="今日完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="orb-label">完成度</span>
+            <strong id="todayPercent">0%</strong>
+            <span id="todayCount">0/0</span>
+          </div>
+        </article>
+
+        <section class="focus-card" aria-labelledby="focusTimerTitle">
+          <div class="focus-card-copy">
+            <span class="eyebrow">FOCUS TIMER</span>
+            <h2 id="focusTimerTitle">专注计时</h2>
+            <p id="focusTaskText">将自动关联到下一项未完成任务</p>
+            <div class="focus-presets" aria-label="选择专注时长">
+              <button type="button" class="focus-preset active" data-focus-minutes="25">25 分钟</button>
+              <button type="button" class="focus-preset" data-focus-minutes="45">45 分钟</button>
+              <button type="button" class="focus-preset" data-focus-minutes="60">60 分钟</button>
+            </div>
+          </div>
+          <div class="timer-display" id="timerDisplay" role="timer" aria-live="off">25:00</div>
+          <div class="timer-controls">
+            <button class="button primary" id="timerToggleButton" type="button">开始专注</button>
+            <button class="button secondary" id="timerFinishButton" type="button" disabled>结束并记录</button>
+            <button class="button ghost" id="timerResetButton" type="button">重置</button>
+          </div>
+          <div class="focus-summary" aria-label="今日专注摘要">
+            <div><strong id="focusedMinutes">0</strong><span>今日专注分钟</span></div>
+            <div><strong id="focusSessionCount">0</strong><span>今日专注次数</span></div>
+            <div><strong id="planActualRatio">0%</strong><span>计划时长投入</span></div>
+          </div>
+        </section>
+
+        <aside class="notice" id="riskNotice" aria-label="计划调整规则"></aside>
+
+        <div class="section-toolbar">
+          <div>
+            <span class="eyebrow">TODAY</span>
+            <h2>今日任务</h2>
+          </div>
+          <label class="filter-toggle">
+            <input id="unfinishedOnly" type="checkbox">
+            <span aria-hidden="true"></span>
+            只看未完成
+          </label>
+        </div>
+        <div id="todayTasks" class="task-groups"></div>
+      </section>
+
+      <section id="weekView" class="view" role="tabpanel" aria-labelledby="weekTab" hidden>
+        <article class="section-card week-intro">
+          <div>
+            <span class="eyebrow" id="weekRange">本周</span>
+            <h2 id="weekTitle">—</h2>
+            <p>点击任意一天，可直接预览并打卡当天任务。</p>
+          </div>
+          <div class="week-score">
+            <span>本周完成</span>
+            <strong id="weekMetric">0%</strong>
+            <small id="weekDoneCount">0/0 项</small>
+          </div>
+        </article>
+        <div id="weekDays" class="week-grid"></div>
+        <article class="section-card goals-card">
+          <div class="card-heading">
+            <span class="eyebrow">WEEKLY TARGET</span>
+            <h3>本周验收目标</h3>
+          </div>
+          <ul id="weekGoals" class="goal-list"></ul>
+          <p class="milestone" id="weekMilestone"></p>
+        </article>
+      </section>
+
+      <section id="roadmapView" class="view" role="tabpanel" aria-labelledby="roadmapTab" hidden>
+        <article class="section-card warning-card">
+          <div class="warning-icon" aria-hidden="true">!</div>
+          <div>
+            <span class="eyebrow">计划说明</span>
+            <h2 id="roadmapNoticeTitle">按真实用时持续调整计划</h2>
+            <p id="courseStatus"></p>
+            <a id="officialCatalog" class="text-link" href="#" target="_blank" rel="noreferrer" hidden>查看参考资料 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <div class="roadmap-heading">
+          <span class="eyebrow">ROADMAP</span>
+          <h2>从重启到初试</h2>
+        </div>
+        <div id="roadmapList" class="roadmap-list"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="privacy-note">
+        <span class="privacy-dot" aria-hidden="true"></span>
+        <div>
+          <strong>进度仅保存在本机</strong>
+          <p>桌面卡片运行时，两端自动同步；单文件离线版使用浏览器本地进度。</p>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="button ghost" id="exportButton" type="button">导出进度</button>
+        <button class="button secondary" id="importButton" type="button">导入进度</button>
+        <input id="importFile" type="file" accept="application/json" hidden>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="plan-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
